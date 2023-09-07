@@ -29,7 +29,9 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.7.0",
-    "defu": "^6.1.2"
+    "@pinia/nuxt": "^0.4.11",
+    "defu": "^6.1.2",
+    "pinia": "^2.1.6"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
