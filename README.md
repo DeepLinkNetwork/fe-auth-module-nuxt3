@@ -51,38 +51,19 @@ export default defineNuxtConfig({
 
 That's it! You can now use `fe-auth-module-nuxt3` in your Nuxt app ✨
 
-## Development # Using yarn
+## Development
 
-```bash
-# Install dependencies
-yarn install
+1. Clone this repository
+2. Install dependencies using `yarn install` or `npm install`
+3. Generate type stubs using `yarn dev:prepare` or `npm run dev:prepare`
+4. Create a .env file in the root of the project for playground to work with the following information (found in example.env) ✨
 
-# Generate type stubs
-yarn dev:prepare
-
-# Develop with the playground
-yarn dev
-
-# Build the playground
-yarn dev:build
-
-# Run ESLint
-yarn  lint
-
-# Run Vitest
-yarn test
-yarn test:watch
-
-# Release new version
-yarn release
-```
-
-- Create a .env file in the root of the project for playground to work with the following information (found in example.env) ✨
-
-```text
+```env
 CBA_PREFIX=test
 BASE_URL=https://test-v2-api.wellcertified.com/
 ```
+
+5. Launch playground using `yarn dev` or `npm run dev`
 
 <!-- Badges -->
 

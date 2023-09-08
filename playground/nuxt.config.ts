@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: [
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
-    "fe-auth-module-nuxt3",
+    "@iwbi/fe-auth-module-nuxt3",
   ],
   piniaPersistedstate: {
     cookieOptions: {
