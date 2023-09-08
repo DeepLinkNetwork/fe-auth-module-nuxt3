@@ -1,6 +1,6 @@
 {
   "name": "fe-auth-module-nuxt3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "IWBI Auth Module for Nuxt3 MicroFrontend websites.",
   "repository": "https://bitbucket.org/iwbi/fe-auth-module-nuxt3",
   "license": "UNLICENSED",
