@@ -22,7 +22,8 @@ export default defineNuxtConfig({
     baseUrl: process.env.BASE_URL || "http://test-v2-api.wellcertified.com",
     // Keys within public, will be also exposed to the client-side
     public: {
-      apiBase: "http://test-v2-api.wellcertified.com",
+      apiBase: process.env.BASE_URL || "http://test-v2-api.wellcertified.com",
+      cbaPrefix: process.env.CBA_PREFIX || "test",
     },
   },
 });

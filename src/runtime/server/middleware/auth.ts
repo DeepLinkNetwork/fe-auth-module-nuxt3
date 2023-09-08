@@ -29,21 +29,27 @@ export default defineEventHandler((event) => {
   const authToken = getCookie(event, "authentication.token");
 
   if (authToken) {
-    setCookie(event, config.cbaPrefix + ".cba.token", authToken);
+    /**
+     * Note this setCookie will not work in initial requests,hence set cookie in authFetch.
+     * Server middleware cookies on initial page serve in nuxt 3 #2187
+     * https://github.com/nuxt/nuxt/issues/21875
+     */
+    setCookie(event, config.cbaPrefix + ".cba.token", authToken, {
+      httpOnly: true,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
     authenticated = true;
     //delete console logs in production
     console.log("CBA: 200 OK - cookie set");
   }
 
   /**
-   * If token are not defined, send a 401 response.
+   * If token are not defined, delete auth cookie
    */
   if (!authenticated) {
-    deleteCookie(event, config.cbaPrefix + ".cba.token", {
-      httpOnly: true,
-      path: "/",
-      sameSite: "strict",
-    });
+    deleteCookie(event, config.cbaPrefix + ".cba.token");
+    deleteCookie(event, "authentication.token");
     //delete console logs in production
     console.log("CBA: 401 Unauthorized - cookie deleted");
   }

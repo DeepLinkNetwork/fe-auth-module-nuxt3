@@ -26,6 +26,13 @@ const { $apiBaseUrl } = useNuxtApp();
 const router = useRouter();
 const isLoading = ref(false);
 
+// get cookie to check Auth
+const authToken = useCookie("authentication.token", {
+  maxAge: 60 * 60 * 24 * 7,
+  path: "/",
+});
+if (authToken.value) router.push("/login-success");
+
 interface loginForm {
   email: string;
   password: string;
@@ -56,10 +63,6 @@ const login = async () => {
     alert("Invalid username or password !!");
   }
 };
-
-const authToken = useCookie("authentication.token");
-
-if (authToken.value) router.push("/");
 </script>
 
 <style>

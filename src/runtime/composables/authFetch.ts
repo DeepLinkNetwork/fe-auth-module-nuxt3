@@ -1,6 +1,23 @@
 import { useAuthStore } from "../store/authStore";
-import { useFetch, useCookie } from "#imports";
+import { useNuxtApp, useFetch, useCookie } from "#imports";
 import { apiFetch } from "./apiFetch";
+
+const setCookie = (value: string | null) => {
+  //Auth Cookie
+  const authCookie = useCookie("authentication.token", {
+    maxAge: 60 * 60 * 24 * 7,
+    path: "/",
+  });
+  authCookie.value = value; // Nuxt will set the maxAge: -1 if the cookie is null or undefined
+
+  //CBA Auth Cookie
+  const { $cbaPrefix } = useNuxtApp(); // get env variable
+  const cbaAuthCookie = useCookie($cbaPrefix() + ".cba.token", {
+    maxAge: 60 * 60 * 24 * 7,
+    path: "/",
+  });
+  cbaAuthCookie.value = value; // Nuxt will set the maxAge: -1 if the cookie is null or undefined
+};
 
 export const authFetch = async (baseUrl: string, payload: any) => {
   return await useFetch(`${baseUrl}/api/authenticate`, {
@@ -21,9 +38,8 @@ export const authFetch = async (baseUrl: string, payload: any) => {
         const authStore: any = useAuthStore();
         /* Update Pinia state */
         authStore.setAuthToken(data.token);
-        //set Auth Cookie
-        const authCookie = useCookie("authentication.token");
-        authCookie.value = data.token;
+        //Set Auth Cookies
+        setCookie(data.token);
         return data.token;
       }
     },
@@ -44,10 +60,9 @@ export const authLogout = async (baseUrl: string) => {
       console.log(res);
       // /* Update Pinia state */
       authStore.unsetAuthToken();
-      //set Auth Cookie
-      const authCookie = useCookie("authentication.token");
-      // Nuxt will set the maxAge: -1 if the cookie is null or undefined
-      authCookie.value = null;
+      // unset Auth Cookies
+      setCookie(null); // Nuxt will set the maxAge: -1 if the cookie is null or undefined
+
       return "success";
     },
     (error) => {

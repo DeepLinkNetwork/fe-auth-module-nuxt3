@@ -6,9 +6,11 @@ export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
   console.log("API base URL:", config.public.apiBase);
   const apiBaseUrl: any = config.public.apiBase;
+  const cbaPrefix: any = config.public.cbaPrefix;
   return {
     provide: {
       apiBaseUrl: () => apiBaseUrl,
+      cbaPrefix: () => cbaPrefix,
     },
   };
 });

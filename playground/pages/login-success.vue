@@ -50,15 +50,18 @@ const router = useRouter();
 const formattedJsonData = computed(() =>
   JSON.stringify(jsonData.value, null, 4)
 );
-const authToken = useCookie("authentication.token");
 
+// get cookie to check Auth
+const authToken = useCookie("authentication.token", {
+  maxAge: 60 * 60 * 24 * 7,
+  path: "/",
+});
 if (!authToken.value) router.push("/");
 
 const logout = async () => {
   isLoading.value = true;
   const logout = await authLogout($apiBaseUrl());
   console.log(logout);
-  authToken.value = "";
   isLoading.value = false;
   router.push("/");
 };
