@@ -23,22 +23,29 @@ This is auth module for MicroFrontend websites.
 
 1. Add `fe-auth-module-nuxt3` dependency to your project
 
+- As NPM private package is not free, we will use IWBI Organization Github Package Registry to host our package privately.
+
+  - [✨ https://github.com/orgs/IWBI/packages](https://github.com/orgs/IWBI/packages)
+
+- Using the Package FROM **IWBI npm packages** ✨
+
+  - To use the package in another project, other users will need to add this registry to their npm configuration:
+
 ```bash
-# Using pnpm
-pnpm add -D fe-auth-module-nuxt3
+npm config set @iwbi:registry https://npm.pkg.github.com/iwbi
+```
 
-# Using yarn
-yarn add --dev fe-auth-module-nuxt3
+- Then user can install the package as usual:
 
-# Using npm
-npm install --save-dev fe-auth-module-nuxt3
+```bash
+npm install @iwbi/fe-auth-module-nuxt3
 ```
 
 2. Add `fe-auth-module-nuxt3` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
-  modules: ["fe-auth-module-nuxt3"],
+  modules: ["@iwbi/fe-auth-module-nuxt3"],
 });
 ```
 
@@ -70,12 +77,11 @@ yarn test:watch
 yarn release
 ```
 
-## Create a .env file in the root of the project for playground to work with the following information (found in example.env) ✨
+- Create a .env file in the root of the project for playground to work with the following information (found in example.env) ✨
 
-```
+```text
 CBA_PREFIX=test
 BASE_URL=https://test-v2-api.wellcertified.com/
-
 ```
 
 <!-- Badges -->
