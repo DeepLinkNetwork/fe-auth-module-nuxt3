@@ -87,9 +87,9 @@ BASE_URL=https://test-v2-api.wellcertified.com/
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/my-module
+[npm-version-href]: https://github.com/orgs/IWBI/packages/npm/fe-auth-module-nuxt3/126263584
 [npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/my-module
+[npm-downloads-href]: https://github.com/orgs/IWBI/packages/npm/fe-auth-module-nuxt3/126263584
 [license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
