@@ -1,8 +1,11 @@
 import { defineNuxtConfig } from "nuxt/config";
-import module from "../src/module";
 
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt", module],
+  modules: [
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "fe-auth-module-nuxt3",
+  ],
   piniaPersistedstate: {
     cookieOptions: {
       sameSite: "strict",
