@@ -21,6 +21,8 @@ export const useUserStore = defineStore<string, UserState>({
     publicUsersList: null,
   }),
 
+  persist: true,
+
   getters: {
     userBillingAddress: (state) => {
       return state.currentUser.addresses.length

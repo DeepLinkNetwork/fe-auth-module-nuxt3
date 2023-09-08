@@ -1,11 +1,6 @@
+// @ts-ignore
 import { useRuntimeConfig } from "#imports";
-import {
-  defineEventHandler,
-  getCookie,
-  setCookie,
-  createError,
-  sendError,
-} from "h3";
+import { defineEventHandler, getCookie, setCookie, deleteCookie } from "h3";
 import type { ModuleRuntimeConfig } from "../../../module";
 
 export default defineEventHandler((event) => {
@@ -29,22 +24,27 @@ export default defineEventHandler((event) => {
   let authenticated = false;
 
   /**
-   * Get the authToken from the Authorization cookie.
+   * Get the authToken from the Authorization token local storage.
    */
   const authToken = getCookie(event, "authentication.token");
 
   if (authToken) {
     setCookie(event, config.cbaPrefix + ".cba.token", authToken);
     authenticated = true;
+    //delete console logs in production
+    console.log("CBA: 200 OK - cookie set");
   }
 
   /**
    * If token are not defined, send a 401 response.
    */
   if (!authenticated) {
-    sendError(
-      event,
-      createError({ statusCode: 401, statusMessage: "Access denied" })
-    );
+    deleteCookie(event, config.cbaPrefix + ".cba.token", {
+      httpOnly: true,
+      path: "/",
+      sameSite: "strict",
+    });
+    //delete console logs in production
+    console.log("CBA: 401 Unauthorized - cookie deleted");
   }
 });

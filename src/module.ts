@@ -1,6 +1,7 @@
 import {
   defineNuxtModule,
   createResolver,
+  addImports,
   addPlugin,
   addServerHandler,
 } from "@nuxt/kit";
@@ -43,6 +44,15 @@ export default defineNuxtModule<ModuleOptions>({
         handler: resolver.resolve("./runtime/server/middleware/auth"),
       });
     }
+
+    // Add auto imports
+    const authComposables = resolver.resolve("./runtime/composables/authFetch");
+    const userComposables = resolver.resolve("./runtime/composables/userFetch");
+    const apiComposables = resolver.resolve("./runtime/composables/apiFetch");
+    addImports([{ from: authComposables, name: "authFetch" }]);
+    addImports([{ from: authComposables, name: "authLogout" }]);
+    addImports([{ from: userComposables, name: "userFetch" }]);
+    addImports([{ from: apiComposables, name: "apiFetch" }]);
 
     addPlugin(resolver.resolve("./runtime/plugin"));
   },
