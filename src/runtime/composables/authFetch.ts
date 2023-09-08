@@ -46,7 +46,8 @@ export const authLogout = async (baseUrl: string) => {
       authStore.unsetAuthToken();
       //set Auth Cookie
       const authCookie = useCookie("authentication.token");
-      authCookie.value = "";
+      // Nuxt will set the maxAge: -1 if the cookie is null or undefined
+      authCookie.value = null;
       return "success";
     },
     (error) => {
