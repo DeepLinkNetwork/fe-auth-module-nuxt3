@@ -70,6 +70,14 @@ yarn test:watch
 yarn release
 ```
 
+## Create a .env file in the root of the project for playground to work with the following information (found in example.env) ✨
+
+```
+CBA_PREFIX=test
+BASE_URL=https://test-v2-api.wellcertified.com/
+
+```
+
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
