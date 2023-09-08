@@ -13,7 +13,7 @@
 
 This is auth module for MicroFrontend websites.
 
-- [✨ By DeepLinkNetwork](https://github.com/DeepLinkNetwork)
+- [✨ By DeepLinkNetwork as Deepender](https://github.com/DeepLinkNetwork)
 
 ## Features
 
@@ -44,30 +44,30 @@ export default defineNuxtConfig({
 
 That's it! You can now use `fe-auth-module-nuxt3` in your Nuxt app ✨
 
-## Development
+## Development # Using yarn
 
 ```bash
 # Install dependencies
-npm install
+yarn install
 
 # Generate type stubs
-npm run dev:prepare
+yarn dev:prepare
 
 # Develop with the playground
-npm run dev
+yarn dev
 
 # Build the playground
-npm run dev:build
+yarn dev:build
 
 # Run ESLint
-npm run lint
+yarn  lint
 
 # Run Vitest
-npm run test
-npm run test:watch
+yarn test
+yarn test:watch
 
 # Release new version
-npm run release
+yarn release
 ```
 
 <!-- Badges -->
