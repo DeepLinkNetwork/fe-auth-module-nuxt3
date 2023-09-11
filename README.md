@@ -23,29 +23,46 @@ This is auth module for MicroFrontend websites.
 
 1. Add `fe-auth-module-nuxt3` dependency to your project
 
-- As NPM private package is not free, we will use IWBI Organization Github Package Registry to host our package privately.
+- As NPM private package is not free, we will use deeplinknetwork Organization Github Package Registry to host our package privately.
 
-  - [✨ https://github.com/orgs/IWBI/packages](https://github.com/orgs/IWBI/packages)
+  - [✨ https://github.com/DeepLinkNetwork?tab=packages](https://github.com/DeepLinkNetwork?tab=packages)
 
-- Using the Package FROM **IWBI npm packages** ✨
+2: Update .npmrc File
+
+- Make sure that you have an .npmrc file in your project (or globally in your user's home directory) that points to the GitHub Packages registry. It should look something like this:
+
+```bash
+@deeplinknetwork:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
+```
+
+3: Authenticate to GitHub Packages
+
+- Ensure that you're authenticated to GitHub Packages with the appropriate scope. You can authenticate using the following command:
+
+```bash
+npm login --registry=https://npm.pkg.github.com --scope=@deeplinknetwork
+```
+
+- Using the Package FROM **deeplinknetwork npm packages** ✨
 
   - To use the package in another project, other users will need to add this registry to their npm configuration:
 
 ```bash
-npm config set @iwbi:registry https://npm.pkg.github.com/iwbi
+npm config set @deeplinknetwork:registry https://npm.pkg.github.com/deeplinknetwork
 ```
 
-- Then user can install the package as usual:
+- Install the Package Try installing the package again with the correct scope and package name:
 
 ```bash
-npm install @iwbi/fe-auth-module-nuxt3
+npm install @deeplinknetwork/fe-auth-module-nuxt3
 ```
 
-2. Add `fe-auth-module-nuxt3` to the `modules` section of `nuxt.config.ts`
+4. Add `fe-auth-module-nuxt3` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
-  modules: ["@iwbi/fe-auth-module-nuxt3"],
+  modules: ["@deeplinknetwork/fe-auth-module-nuxt3"],
 });
 ```
 
@@ -67,10 +84,10 @@ BASE_URL=https://test-v2-api.wellcertified.com/
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://github.com/orgs/IWBI/packages/npm/fe-auth-module-nuxt3/126263584
-[npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://github.com/orgs/IWBI/packages/npm/fe-auth-module-nuxt3/126263584
+[npm-version-src]: https://img.shields.io/github/v/tag/DeepLinkNetwork/fe-auth-module-nuxt3?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://github.com/DeepLinkNetwork?tab=packages/npm/fe-auth-module-nuxt3/126263584
+[npm-downloads-src]: https://img.shields.io/github/downloads/DeepLinkNetwork/fe-auth-module-nuxt3/total.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://github.com/DeepLinkNetwork?tab=packages/npm/fe-auth-module-nuxt3/126263584
 [license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
