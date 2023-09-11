@@ -1,6 +1,6 @@
 {
   "name": "@deeplinknetwork/fe-auth-module-nuxt3",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "IWBI Auth Module for Nuxt3 MicroFrontend websites.",
   "repository": "https://github.com/DeepLinkNetwork/fe-auth-module-nuxt3",
   "license": "UNLICENSED",
